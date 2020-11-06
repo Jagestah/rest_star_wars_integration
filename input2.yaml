@@ -1,0 +1,10 @@
+---
+input:
+  - type: people
+    id: 4
+    infoRequest:
+      - name
+      - films
+      - gender
+      - starships
+      - url

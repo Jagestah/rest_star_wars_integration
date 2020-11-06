@@ -1,0 +1,82 @@
+[
+    {
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "gender": "male", 
+        "name": "Luke Skywalker", 
+        "starships": [
+            "http://swapi.dev/api/starships/12/", 
+            "http://swapi.dev/api/starships/22/"
+        ], 
+        "url": "http://swapi.dev/api/people/1/"
+    }, 
+    {
+        "gender": "hermaphrodite", 
+        "mass": "1,358", 
+        "name": "Jabba Desilijic Tiure", 
+        "species": [
+            "http://swapi.dev/api/species/5/"
+        ], 
+        "url": "http://swapi.dev/api/people/16/"
+    }, 
+    {
+        "crew": "47,060", 
+        "manufacturer": "Kuat Drive Yards", 
+        "max_atmosphering_speed": "975", 
+        "name": "Star Destroyer", 
+        "url": "http://swapi.dev/api/starships/3/"
+    }, 
+    {
+        "climate": "temperate", 
+        "name": "Naboo", 
+        "residents": [
+            "http://swapi.dev/api/people/3/", 
+            "http://swapi.dev/api/people/21/", 
+            "http://swapi.dev/api/people/35/", 
+            "http://swapi.dev/api/people/36/", 
+            "http://swapi.dev/api/people/37/", 
+            "http://swapi.dev/api/people/38/", 
+            "http://swapi.dev/api/people/39/", 
+            "http://swapi.dev/api/people/42/", 
+            "http://swapi.dev/api/people/60/", 
+            "http://swapi.dev/api/people/61/", 
+            "http://swapi.dev/api/people/66/"
+        ], 
+        "terrain": "grassy hills, swamps, forests, mountains", 
+        "url": "http://swapi.dev/api/planets/8/"
+    }, 
+    {
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "gender": "male", 
+        "name": "Darth Vader", 
+        "starships": [
+            "http://swapi.dev/api/starships/13/"
+        ], 
+        "url": "http://swapi.dev/api/people/4/"
+    }, 
+    {
+        "gender": "male", 
+        "mass": "84", 
+        "name": "Anakin Skywalker", 
+        "species": [], 
+        "url": "http://swapi.dev/api/people/11/"
+    }, 
+    {
+        "climate": "temperate", 
+        "name": "Endor", 
+        "residents": [
+            "http://swapi.dev/api/people/30/"
+        ], 
+        "terrain": "forests, mountains, lakes", 
+        "url": "http://swapi.dev/api/planets/7/"
+    }
+]

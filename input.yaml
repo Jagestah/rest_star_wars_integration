@@ -1,0 +1,66 @@
+---
+input:
+  - type: people
+    id: 1
+    infoRequest:
+      - name
+      - films
+      - gender
+      - starships
+      - url
+  - type: people
+    id: 16
+    infoRequest:
+      - name
+      - mass
+      - gender
+      - species
+      - url
+  - type: starships
+    id: 3
+    infoRequest:
+      - name
+      - max_atmosphering_speed
+      - manufacturer
+      - crew
+      - url
+  - type: planets
+    id: 8
+    infoRequest:
+      - name
+      - climate
+      - terrain
+      - url
+      - residents
+  - type: people
+    id: 4
+    infoRequest:
+      - name
+      - films
+      - gender
+      - starships
+      - url
+  - type: people
+    id: 11
+    infoRequest:
+      - name
+      - mass
+      - gender
+      - species
+      - url
+  - type: starships
+    id: 6
+    infoRequest:
+      - name
+      - max_atmosphering_speed
+      - manufacturer
+      - crew
+      - url
+  - type: planets
+    id: 7
+    infoRequest:
+      - name
+      - climate
+      - terrain
+      - url
+      - residents
