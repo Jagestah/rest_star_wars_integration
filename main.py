@@ -39,8 +39,12 @@ def send_request(obj):
     url = '{}/{}/{}'.format(base_url, obj["type"], obj["id"])
     response = requests.get(url)
     json_response = response.json()
-    parsed_results = parse_results(json_response, obj["infoRequest"])
-    return parsed_results
+    if response.ok:
+        parsed_results = parse_results(json_response, obj["infoRequest"])
+        return parsed_results
+    else:
+        print ('The url: {} returned a {} error code'.format(url, response.status_code))
+
 
 
 # This function will pull the objects out of the returned dictionary
