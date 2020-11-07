@@ -84,7 +84,7 @@
         "species": [], 
         "url": "http://swapi.dev/api/people/11/"
     }, 
-    null, 
+    {}, 
     {
         "climate": "temperate", 
         "name": "Endor", 

@@ -30,7 +30,7 @@ def read_yaml_stream(stream):
                     response = send_request(req)
                     data.append(response)
                 except Exception as err:
-                    print err
+                    raise RuntimeError(err)
     except yaml.YAMLError as exc:
         print '{} yaml is not well formatted'.format(exc)
     return data
@@ -72,7 +72,7 @@ def heatlh():
 # you can also send a post request to this route using a yaml file as the data-binary
 # and it will write to the local json file and also return a json list
 # containing objects of information on the star wars characters
-@APP.route('/api/yaml', methods=['GET', 'POST'])
+@APP.route('/api/json', methods=['GET', 'POST'])
 def run():
     """
     GET Returns a json object transformed from a local
@@ -90,7 +90,7 @@ def run():
                 json_file.write('{}'.format(json.dumps(response, indent=4, sort_keys=True)))
             return json.dumps(response, indent=4)
         except Exception as err:
-            print err
+            raise RuntimeError(err)
     else:
         files = glob.glob('{}/*.yaml'.format(WORKING_DIR))
         for yaml_file in files:
