@@ -1,10 +1,8 @@
-image: docker:latest
 
-services:
-  - docker:dind
 
 stages:
   - test
+  - build
   - deploy
 
 test:
@@ -13,24 +11,37 @@ test:
     - apt-get update -qy
     - apt-get install -y python-dev python-pip
     - pip install pytest
+    - pip install pylint
     - pip install -r requirements.txt
+    - python -m pylint ./*.py
     - python -m pytest ./main_test.py
+
+build:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build
+  script:
     - docker build .
 
-staging:
+production:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: deploy
   script:
-    - apt-get update -qy
     - docker build -t anonalangford/rest_star_wars:latest .
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push anonalangford/rest_star_wars:latest
   only:
     - master
 
-production:
+tagging:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: deploy
   script:
-    - apt-get update -qy
     - docker build -t anonalangford/rest_star_wars:$CI_COMMIT_TAG .
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push anonalangford/rest_star_wars:$CI_COMMIT_TAG
