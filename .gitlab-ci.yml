@@ -1,0 +1,33 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+    - apt-get update -qy
+    - apt-get install -y python-dev python-pip
+    - pip install pytest
+    - pip install -r requirements.txt
+    - python -m pytest ./main_test.py
+    - docker build .
+
+staging:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - docker build -t anonalangford/rest_star_wars:latest .
+    - docker push anonalangford/rest_star_wars:latest
+  only:
+    - master
+
+production:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - docker build -t anonalangford/rest_star_wars:$CI_COMMIT_TAG .
+    - docker push anonalangford/rest_star_wars:$CI_COMMIT_TAG
+    - cd rest-star-wars
+    - helm package --version $CI_COMMIT_TAG
+  only:
+    - tags

@@ -2,7 +2,6 @@
 import glob
 import json
 import os
-
 import requests
 import yaml
 from flask import Flask, request
