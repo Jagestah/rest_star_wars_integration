@@ -7,6 +7,20 @@
             "http://swapi.dev/api/films/6/"
         ], 
         "gender": "male", 
+        "name": "Darth Vader", 
+        "starships": [
+            "http://swapi.dev/api/starships/13/"
+        ], 
+        "url": "http://swapi.dev/api/people/4/"
+    }, 
+    {
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "gender": "male", 
         "name": "Luke Skywalker", 
         "starships": [
             "http://swapi.dev/api/starships/12/", 
@@ -70,6 +84,7 @@
         "species": [], 
         "url": "http://swapi.dev/api/people/11/"
     }, 
+    null, 
     {
         "climate": "temperate", 
         "name": "Endor", 

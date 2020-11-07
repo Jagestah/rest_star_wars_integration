@@ -55,12 +55,16 @@ def parse_results(obj, info):
     return parsed_obj
 
 
+
+@app.route('/api/health', methods=['GET'])
+def heatlh():
+    return "alive"
 # This route will allow to read in the local .yaml files and return a json list
 # containing objects of information on the star wars characters
 # you can also send a post request to this route using a yaml file as the data-binary
 # and it will write to the local json file and also return a json list
 # containing objects of information on the star wars characters 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/api/yaml', methods=['GET', 'POST'])
 def run():
     data = []
     if request.method == "POST":
