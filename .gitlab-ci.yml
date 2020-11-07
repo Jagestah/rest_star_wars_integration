@@ -9,9 +9,8 @@ test:
   stage: test
   script:
     - apt-get update -qy
-    - apt-get install -y python-dev python-pip
+    - apt-get install -y python-dev python-pip pylint
     - pip install pytest
-    - pip install pylint
     - pip install -r requirements.txt
     - python -m pylint ./*.py
     - python -m pytest ./main_test.py
