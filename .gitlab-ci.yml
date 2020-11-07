@@ -17,6 +17,8 @@ pylint:
     - pip install -r requirements.txt
   script:
     - python -m pylint ./*.py
+  only:
+    - merge_requests
   
 pytest:
   stage: pytest
@@ -27,6 +29,8 @@ pytest:
     - pip install -r requirements.txt
   script:
     - python -m pytest ./main_test.py
+  only:
+    - merge_requests
 
 helm:
   stage: helm
@@ -39,6 +43,8 @@ helm:
   script:
     - helm lint ./rest-star-wars/
     - helm template ./rest-star-wars/
+  only:
+    - merge_requests
 
 build:
   image: docker:latest
@@ -47,6 +53,8 @@ build:
   stage: build
   script:
     - docker build .
+  only:
+    - merge_requests
 
 production:
   image: docker:latest
