@@ -63,7 +63,7 @@ production:
   stage: deploy
   script:
     - docker build -t anonalangford/rest_star_wars:latest .
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin
     - docker push anonalangford/rest_star_wars:latest
   only:
     - master
