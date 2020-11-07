@@ -1,20 +1,32 @@
+"""This module will test the functions in the main.py"""
 import main
 
-yaml = "---\ninput:\n  - type: people\n    id: 1\n    infoRequest:\n      - name\n      - films\n      - gender\n      - starships\n      - url\n "
+YAML = """
+---input:
+  - type: people
+    id: 1
+    infoRequest:
+      - name
+      - films
+      - gender
+      - starships
+      - url
+ """
 
-req = {
-      "type": "people",
-      "id": 16,
-      "infoRequest": [
-         "name",
-         "mass",
-         "gender",
-         "species",
-         "url"
-      ]
-   }
+REQ = {
+    "type": "people",
+    "id": 16,
+    "infoRequest": [
+        "name",
+        "mass",
+        "gender",
+        "species",
+        "url"
+    ]
+}
 
 def test_read_yaml():
+    """Tests the read_yaml function in the main.py"""
     expected = [{
         'films': [
             'http://swapi.dev/api/films/1/',
@@ -30,9 +42,10 @@ def test_read_yaml():
             ],
         'url': 'http://swapi.dev/api/people/1/'
     }]
-    assert main.read_yaml_stream(yaml) == expected
+    assert main.read_yaml_stream(YAML) == expected
 
 def test_send_request():
+    """Tests the send_request function in the main.py"""
     expected = {
         "gender": "hermaphrodite",
         "mass": "1,358",
@@ -40,29 +53,30 @@ def test_send_request():
         "species": ["http://swapi.dev/api/species/5/"],
         "url": "http://swapi.dev/api/people/16/"
     }
-    assert main.send_request(req) == expected
+    assert main.send_request(REQ) == expected
 
 def test_parse_results():
-    obj =  {
+    """Tests the parse_results function in the main.py"""
+
+    obj = {
         "films": [
-            "http://swapi.dev/api/films/1/", 
-            "http://swapi.dev/api/films/2/", 
-            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/1/",
+            "http://swapi.dev/api/films/2/",
+            "http://swapi.dev/api/films/3/",
             "http://swapi.dev/api/films/6/"
-        ], 
-        "gender": "male", 
-        "name": "Luke Skywalker", 
+        ],
+        "gender": "male",
+        "name": "Luke Skywalker",
         "starships": [
-            "http://swapi.dev/api/starships/12/", 
+            "http://swapi.dev/api/starships/12/",
             "http://swapi.dev/api/starships/22/"
-        ], 
+        ],
         "url": "http://swapi.dev/api/people/1/"
     }
     info = ["name", "gender", "url"]
     expected = {
-        "gender": "male", 
-        "name": "Luke Skywalker", 
+        "gender": "male",
+        "name": "Luke Skywalker",
         "url": "http://swapi.dev/api/people/1/"
     }
     assert main.parse_results(obj, info) == expected
-
