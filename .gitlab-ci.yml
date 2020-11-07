@@ -1,19 +1,44 @@
 
+image: "python:2.7" 
 
 stages:
-  - test
+  - pylint
+  - pytest
+  - helm
   - build
   - deploy
 
-test:
-  stage: test
-  script:
+pylint:
+  stage: pylint
+  before_script:
     - apt-get update -qy
-    - apt-get install -y python-dev python-pip pylint
+    - apt-get install -y python-dev python-pip
+    - pip install pylint
+    - pip install -r requirements.txt
+  script:
+    - python -m pylint ./*.py
+  
+pytest:
+  stage: pytest
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y python-dev python-pip
     - pip install pytest
     - pip install -r requirements.txt
-    - python -m pylint ./*.py
+  script:
     - python -m pytest ./main_test.py
+
+helm:
+  stage: helm
+  before_script:
+    - curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+    - apt-get install apt-transport-https --yes
+    - echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+    - apt-get update -qy
+    - apt-get install -y helm
+  script:
+    - helm lint ./rest-star-wars/
+    - helm template ./rest-star-wars/
 
 build:
   image: docker:latest
