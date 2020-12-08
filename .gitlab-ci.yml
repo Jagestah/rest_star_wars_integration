@@ -2,14 +2,13 @@
 image: "python:2.7" 
 
 stages:
-  - pylint
-  - pytest
+  - test
   - helm
   - build
   - deploy
 
 pylint:
-  stage: pylint
+  stage: test
   before_script:
     - apt-get update -qy
     - apt-get install -y python-dev python-pip
@@ -19,9 +18,10 @@ pylint:
     - python -m pylint ./*.py
   only:
     - merge_requests
+  allow_failure: true
   
 pytest:
-  stage: pytest
+  stage: test
   before_script:
     - apt-get update -qy
     - apt-get install -y python-dev python-pip
